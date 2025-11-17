@@ -1,4 +1,4 @@
-## Monopoli, alustava luokkakaavio
+## HSL sekvenssikaavio
 
 ```mermaid
 sequenceDiagram

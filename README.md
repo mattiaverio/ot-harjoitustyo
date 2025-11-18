@@ -7,6 +7,7 @@ Tämä on ohjelmistotekniikan harjoitustyö, jossa toteutan **shakkipelin**. Pel
 [Vaatimusmäärittely](./dokumentaatio/vaatimusmäärittely.md)
 [Työaikakirjanpito](./dokumentaatio/tyoaikakirjanpito.md)
 [Changelog](./dokumentaatio/changelog.md)
+[Kielimalliselvitys](./dokumentaatio/kielimalliselvitys.md)
 
 ## Asennus
 

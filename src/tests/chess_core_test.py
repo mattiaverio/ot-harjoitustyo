@@ -1,5 +1,6 @@
 import unittest
-from chess_core import ChessGame
+from services.chess_core import ChessGame
+
 
 class TestChessCore(unittest.TestCase):
     def setUp(self):

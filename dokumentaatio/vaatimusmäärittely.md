@@ -16,14 +16,14 @@ Sovelluksessa on yksi käyttäjärooli, normaali käyttäjä. Tyypillisesti sove
 
 ### Kirjautuneena
 
-- Käyttäjä voi aloittaa uuden shakkipelin
+- &#9745; Käyttäjä voi aloittaa uuden shakkipelin 
   - Toinen käyttäjä kirjautuu, jos kaksinpeli
   - Tietokonetta vastaan (mikäli aika riittää)
 
 - Pelin aikana
-  - Käyttäjä voi siirtää nappuloitaan
+  - &#9745; Käyttäjä voi siirtää nappuloitaan
   - Käyttäjä voi luovuttaa tai ehdottaa tasapeliä
-  - Peli etenee ja päättyy shakin sääntöjen mukaisesti
+  - &#9745; Peli etenee ja päättyy shakin sääntöjen mukaisesti
 
 - Pelitulosten päivitys
   - Pelin päätyttyä pelaajien ELO päivitetään tuloksen perusteella

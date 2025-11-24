@@ -8,6 +8,7 @@ Tämä on ohjelmistotekniikan harjoitustyö, jossa toteutan **shakkipelin**. Pel
 [Työaikakirjanpito](./dokumentaatio/tyoaikakirjanpito.md)
 [Changelog](./dokumentaatio/changelog.md)
 [Kielimalliselvitys](./dokumentaatio/kielimalliselvitys.md)
+[Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
 
 ## Asennus
 
@@ -34,4 +35,10 @@ Testikattavuusraportin generointi:
 
 ```bash
 poetry run invoke coverage-report
+```
+
+Pylint:
+
+```bash
+poetry run invoke lint
 ```

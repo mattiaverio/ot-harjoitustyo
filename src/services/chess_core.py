@@ -1,24 +1,32 @@
+from dataclasses import dataclass
 import chess
 
-class GameState:
-    def __init__(self, fen, turn_white, is_check, is_game_over, result, last_move):
-        self.fen = fen
-        self.turn_white = turn_white
-        self.is_check = is_check
-        self.is_game_over = is_game_over
-        self.result = result
-        self.last_move = last_move
 
+@dataclass
+class GameState:
+    fen: str
+    turn_white: bool
+    is_check: bool
+    is_game_over: bool
+    result: str | None = None
+    last_move: chess.Move | None = None
+
+
+@dataclass
 class MoveResult:
-    def __init__(self, ok, reason, san, state):
-        self.ok = ok
-        self.reason = reason
-        self.san = san
-        self.state = state
+    ok: bool
+    reason: str | None = None
+    san: str | None = None
+    state: GameState | None = None
+
 
 class ChessGame:
     def __init__(self):
         self._board = chess.Board()
+
+    @property
+    def state(self):
+        return self.get_state()
 
     def get_state(self):
         if self._board.is_game_over():
@@ -49,6 +57,15 @@ class ChessGame:
     def piece_at(self, square):
         return self._board.piece_at(square)
 
+    def is_piece_own(self, piece):
+        if piece is None:
+            return False
+        side_to_move_is_white = self._board.turn == chess.WHITE
+        return (piece.color == chess.WHITE) == side_to_move_is_white
+
+    def is_square_own(self, square):
+        return self.is_piece_own(self._board.piece_at(square))
+
     def reset(self):
         self._board = chess.Board()
 
@@ -59,6 +76,12 @@ class ChessGame:
                 targets.add(mv.to_square)
         return targets
 
+    def needs_promotion(self, from_sq: int, to_sq: int) -> bool:
+        return any(
+            mv.from_square == from_sq and mv.to_square == to_sq and mv.promotion
+            for mv in self._board.legal_moves
+        )
+
     def allowed_promotions(self, from_sq, to_sq):
         allowed = []
         for pt in (chess.QUEEN, chess.ROOK, chess.BISHOP, chess.KNIGHT):
@@ -67,11 +90,14 @@ class ChessGame:
                 allowed.append(pt)
         return allowed
 
-    def move_by_san(self, san):
+    def move_by_san(self, san: str):
+        san = san.strip()
+        if not san:
+            return self._failed("Empty SAN")
         try:
             mv = self._board.parse_san(san)
-        except Exception as e:
-            return self._failed(str(e))
+        except ValueError:
+            return self._failed(f"Invalid SAN: {san}")
         return self._push_and_report(mv)
 
     def move(self, from_sq, to_sq, promotion=None):
@@ -81,6 +107,31 @@ class ChessGame:
                 return self._failed("Promotion required")
             return self._failed("Illegal move")
         return self._push_and_report(mv)
+
+    def move_or_prompt(self, from_sq, to_sq, prompt_callback=None):
+        initial = self.move(from_sq, to_sq)
+        if initial.ok:
+            return initial
+
+        if not self.needs_promotion(from_sq, to_sq):
+            return initial
+
+        if prompt_callback is None:
+
+            return self._failed("Promotion required")
+
+        allowed = self.allowed_promotions(from_sq, to_sq)
+        if not allowed:
+
+            return self._failed("Promotion required but no options")
+
+        choice = prompt_callback(allowed)
+
+        if choice is None:
+            return self._failed("Promotion canceled")
+
+        promoted_result = self.move(from_sq, to_sq, promotion=choice)
+        return promoted_result
 
     def _push_and_report(self, mv):
         san_text = self._board.san(mv)

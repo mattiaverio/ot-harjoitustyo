@@ -10,4 +10,4 @@
 | 24.11.|  4  | Ohjelman laajentamista, refaktorointia, dokumentaatio |
 |       |     |  |
 |       |     |  |
-| yht   |    | | 
+| yht   |  19  | | 

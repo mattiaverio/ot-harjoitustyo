@@ -9,6 +9,8 @@ Tämä on ohjelmistotekniikan harjoitustyö, jossa toteutan **shakkipelin**. Pel
 [Changelog](./dokumentaatio/changelog.md)
 [Kielimalliselvitys](./dokumentaatio/kielimalliselvitys.md)
 [Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
+**[Ylimääräinen koodikatselmointi](https://github.com/Victheliar/Aineopintojen-harjoitusty-Ohjelmistotekniikka/issues/1)**
+
 
 ## Asennus
 

@@ -26,7 +26,7 @@ class GameService:
         self._user_repository.update_elo(black_player)
 
     def _calculate_new_rating(self, rating_a, rating_b, actual_score_a):
-        K = 32
+        k = 32
         expected_score_a = 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
-        new_rating_a = rating_a + K * (actual_score_a - expected_score_a)
+        new_rating_a = rating_a + k * (actual_score_a - expected_score_a)
         return int(round(new_rating_a))

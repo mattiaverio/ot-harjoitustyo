@@ -28,10 +28,12 @@ def piece_to_unicode(piece_type, is_white):
 
 
 class GamePage(tk.Frame):
-    def __init__(self, master, ui):
+    def __init__(self, master, ui, white_player, black_player):
         super().__init__(master)
         self.ui = ui
         self.game = ChessGame()
+        self.white_player = white_player
+        self.black_player = black_player
 
         # Initialize UI state
         self._init_state()
@@ -118,9 +120,8 @@ class GamePage(tk.Frame):
         self.redraw()
         self.update_status()
 
-        if self.game.state.is_game_over and self.game.state.result:
-            messagebox.showinfo(
-                "Game Over", f"Result: {self.game.state.result}")
+        if self.game.state.is_game_over:
+            self._handle_game_over(self.game.state.result)
 
     def on_cancel(self):
         self.clear_selection()
@@ -251,3 +252,13 @@ class GamePage(tk.Frame):
         top.grab_set()
         self.wait_window(top)
         return choice["val"]
+
+    def _handle_game_over(self, result):
+        self.ui.game_service.record_game_result(self.white_player, self.black_player, result)
+
+        msg = f"Game Over: {result}\n\n" \
+              f"New Ratings:\n" \
+              f"{self.white_player.username}: {self.white_player.elo}\n" \
+              f"{self.black_player.username}: {self.black_player.elo}"
+        
+        messagebox.showinfo("Game Result", msg)

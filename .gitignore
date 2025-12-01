@@ -2,3 +2,6 @@ __pycache__
 .pytest_cache
 .coverage
 htmlcov
+*.sqlite
+data/database.sqlite
+!data/.gitkeep

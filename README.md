@@ -19,7 +19,14 @@ Tämä on ohjelmistotekniikan harjoitustyö, jossa toteutan **shakkipelin**. Pel
 ```bash
 poetry install
 ```
-2. Käynnistä sovellus:
+
+2. Alusta tietokanta:
+
+```bash
+poetry run invoke db-init
+```
+
+3. Käynnistä sovellus:
 
 ```bash
 poetry run invoke start

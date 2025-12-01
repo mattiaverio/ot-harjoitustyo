@@ -254,11 +254,12 @@ class GamePage(tk.Frame):
         return choice["val"]
 
     def _handle_game_over(self, result):
-        self.ui.game_service.record_game_result(self.white_player, self.black_player, result)
+        self.ui.game_service.record_game_result(
+            self.white_player, self.black_player, result)
 
         msg = f"Game Over: {result}\n\n" \
               f"New Ratings:\n" \
               f"{self.white_player.username}: {self.white_player.elo}\n" \
               f"{self.black_player.username}: {self.black_player.elo}"
-        
+
         messagebox.showinfo("Game Result", msg)

@@ -1,5 +1,6 @@
 from entities.user import User
 
+
 class UserRepository:
     def __init__(self, connection):
         self._connection = connection
@@ -40,6 +41,7 @@ class UserRepository:
 
     def find_top_by_elo(self, limit=20):
         cursor = self._connection.cursor()
-        cursor.execute("SELECT * FROM users ORDER BY elo DESC LIMIT ?", (limit,))
+        cursor.execute(
+            "SELECT * FROM users ORDER BY elo DESC LIMIT ?", (limit,))
         rows = cursor.fetchall()
         return [User(row["username"], row["elo"]) for row in rows]

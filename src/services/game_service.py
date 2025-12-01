@@ -8,14 +8,16 @@ class GameService:
             score_white = 1.0
         elif result_string == "0-1":
             score_white = 0.0
-        
+
         score_black = 1.0 - score_white
 
         self._update_elo(white_player, black_player, score_white, score_black)
 
     def _update_elo(self, white_player, black_player, score_white, score_black):
-        new_white_elo = self._calculate_new_rating(white_player.elo, black_player.elo, score_white)
-        new_black_elo = self._calculate_new_rating(black_player.elo, white_player.elo, score_black)
+        new_white_elo = self._calculate_new_rating(
+            white_player.elo, black_player.elo, score_white)
+        new_black_elo = self._calculate_new_rating(
+            black_player.elo, white_player.elo, score_black)
 
         white_player.elo = new_white_elo
         black_player.elo = new_black_elo

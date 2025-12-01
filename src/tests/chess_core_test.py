@@ -1,6 +1,6 @@
 import unittest
 import chess
-from services.chess_core import ChessGame
+from services.chess_game import ChessGame
 
 
 class TestChessCore(unittest.TestCase):

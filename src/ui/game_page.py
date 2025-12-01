@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import chess
-from services.chess_core import ChessGame
+from services.chess_game import ChessGame
 
 # UI constants
 SQUARE_SIZE = 72

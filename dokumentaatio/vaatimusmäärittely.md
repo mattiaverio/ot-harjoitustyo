@@ -12,12 +12,12 @@ Sovelluksessa on yksi käyttäjärooli, normaali käyttäjä. Tyypillisesti sove
 
 ### Ennen pelin aloittamista
 
-- Käyttäjä kirjautuu antamalla käyttäjänimen
+- &#9745; Käyttäjä kirjautuu antamalla käyttäjänimen
 
 ### Kirjautuneena
 
 - &#9745; Käyttäjä voi aloittaa uuden shakkipelin 
-  - Toinen käyttäjä kirjautuu, jos kaksinpeli
+  - &#9745; Toinen käyttäjä kirjautuu, jos kaksinpeli
   - Tietokonetta vastaan (mikäli aika riittää)
 
 - Pelin aikana
@@ -26,13 +26,11 @@ Sovelluksessa on yksi käyttäjärooli, normaali käyttäjä. Tyypillisesti sove
   - &#9745; Peli etenee ja päättyy shakin sääntöjen mukaisesti
 
 - Pelitulosten päivitys
-  - Pelin päätyttyä pelaajien ELO päivitetään tuloksen perusteella
+  - &#9745; Pelin päätyttyä pelaajien ELO päivitetään tuloksen perusteella
 
 - Tulosten tarkastelu
-  - Käyttäjä voi tarkastella omia ja muiden pelaajien ELO-ranking-arvoja
+  - &#9745; Käyttäjä voi tarkastella omia ja muiden pelaajien ELO-ranking-arvoja
   - Käyttäjä voi nähdä pelihistorian, johon sisältyy pelitulokset
-
-- Käyttäjä voi kirjautua ulos
 
 ## Jatkokehitysideoita
 
